@@ -15,7 +15,7 @@ class DummyExecutor(Executor):
         vals = [(val ** 2) for val in list(range(8))]
         idxs = list(range(8))
         random.shuffle(idxs)
-        return DataList(vals, batch_size=2, idx_order=idxs)
+        return DataList(vals, batch_size=1, idx_order=idxs)
 
     def train_forward(self, data: List[int]) -> Any:
         return ...
