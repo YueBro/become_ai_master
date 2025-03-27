@@ -15,7 +15,6 @@ class Pipeline:
         self.recaller = Recaller(list(Milestones))
 
         self.status = PipelineStatus(
-            is_train=False,
             start_ep_idx=-1,
             end_ep_idx=-1,
             current_ep_idx=-1,
@@ -85,7 +84,6 @@ class Pipeline:
         self.recaller.trigger(Milestones.EV_EN, self.cfg, self.status)
 
     def _update_status_on_train_start(self, start_ep_idx: int, end_ep_idx: int):
-        self.status.is_train = True
         self.status.start_ep_idx = start_ep_idx
         self.status.end_ep_idx = end_ep_idx
         self.status.start_time = time.time()
@@ -98,5 +96,4 @@ class Pipeline:
         self.status.total_its = total_its
 
     def _update_status_on_eval_start(self):
-        self.status.is_train = False
         self.status.start_time = time.time()
