@@ -10,7 +10,7 @@ from typing import Tuple, List, Union, Optional
 class SquareObstacle:
     center_xy: Tuple[float, float]  # down-left_corner=(0.0, 0.0)
     width: float
-    angle: float  # ∈[0.0, 1.0), where 0.0 is up and rotates clockwise
+    angle: float  # ∈[0.0, 1.0), where 0.0 is (x=1.0,y=0.0) direction and 0.0 -> 1.0 is counter-clockwise
 
     def __post_init__(self):
         self.angle -= int(self.angle)

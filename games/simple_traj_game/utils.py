@@ -10,7 +10,7 @@ def interp(val: float, src_range: Tuple[float, float], dst_range: Tuple[float, f
 def get_square_vertices(center_xy: Tuple[float, float], width: float, angle: float) -> List[Tuple[float, float]]:
     '''
     @param: angle
-        ∈[0.0, 1.0), where 0.0 -> 1.0 is a clockwise rotation, and 0.0 and 1.0 are identical
+        ∈[0.0, 1.0), where 0.0 is (x=1.0,y=0.0) direction and 0.0 -> 1.0 is counter-clockwise
     '''
     r = width / 2 * (2 ** 0.5)
     a = 2 * math.pi * angle
