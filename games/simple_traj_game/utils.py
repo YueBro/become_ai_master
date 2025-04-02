@@ -1,5 +1,7 @@
 import math
 
+import numpy as np
+
 from typing import Tuple, List
 
 
@@ -64,3 +66,17 @@ def extend_line(xy0: Tuple[float, float], xy1: Tuple[float, float], radius: floa
         (xy1[0] - dx, xy1[1] - dy),
         (xy1[0] + dx, xy1[1] + dy),
     ]
+
+
+def get_distance(xy0: Tuple[float, float], xy1: Tuple[float, float], l_lv=2) -> float:
+    dy = xy1[1] - xy0[1]
+    dx = xy1[0] - xy0[0]
+    return (dx ** l_lv + dy ** l_lv) ** (1 / l_lv)
+
+
+def get_angle_between_vecs(xy0s: np.ndarray, xy1s: np.ndarray):
+    uvec_0 = xy0s / ((xy0s[...,0] ** 2 + xy0s[...,1] ** 2) ** 0.5)[...,None]
+    uvec_1 = xy1s / ((xy1s[...,0] ** 2 + xy1s[...,1] ** 2) ** 0.5)[...,None]
+    uvec_diff = uvec_1 - uvec_0
+    lens_uvec_diff = (uvec_diff[...,0] ** 2 + uvec_diff[...,1] ** 2) ** 0.5
+    return np.arcsin(lens_uvec_diff / 2) * 2
